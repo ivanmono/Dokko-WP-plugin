@@ -105,6 +105,9 @@ class Dokko_Chat_Public {
         // DKW Variables
         $css .= '--dkw-header-background: ' . esc_attr($options['dkw_header_background'] ?? '#CC314D') . ';';
         $css .= '--dkw-header-text: ' . esc_attr($options['dkw_header_text'] ?? '#ffffff') . ';';
+        $css .= '--dkw-header-bg-image: url(\'' . esc_url($options['dkw_header_bg_image'] ?? '') . '\');';
+        $css .= '--dkw-header-logo: url(\'' . esc_url($options['dkw_header_logo'] ?? '') . '\');';
+        $css .= '--dkw-avatar-icon: url(\'' . esc_url($options['avatar_icon'] ?? '') . '\');';
         $css .= '--dkw-body-background: ' . esc_attr($options['dkw_body_background'] ?? '#14181e') . ';';
         $css .= '--dkw-message-outgoing-background: ' . esc_attr($options['dkw_message_outgoing_background'] ?? '#CC314D') . ';';
         $css .= '--dkw-message-outgoing-text: ' . esc_attr($options['dkw_message_outgoing_text'] ?? '#ffffff') . ';';
@@ -163,7 +166,9 @@ class Dokko_Chat_Public {
                 /* Dokko Chat Widget Variables (dkw_) */
                 --dkw-header-background: ' . esc_attr($options['dkw_header_background'] ?? '#CC314D') . ';
                 --dkw-header-text: ' . esc_attr($options['dkw_header_text'] ?? '#ffffff') . ';
-                --dkw-header-bg-image: "";
+                --dkw-header-bg-image: url(\'' . esc_url($options['dkw_header_bg_image'] ?? '') . '\');
+                --dkw-header-logo: url(\'' . esc_url($options['dkw_header_logo'] ?? '') . '\');
+                --dkw-avatar-icon: url(\'' . esc_url($options['avatar_icon'] ?? '') . '\');
                 --dkw-body-background: ' . esc_attr($options['dkw_body_background'] ?? '#14181e') . ';
                 --dkw-message-outgoing-background: ' . esc_attr($options['dkw_message_outgoing_background'] ?? '#CC314D') . ';
                 --dkw-message-outgoing-text: ' . esc_attr($options['dkw_message_outgoing_text'] ?? '#ffffff') . ';
@@ -200,7 +205,9 @@ class Dokko_Chat_Public {
                 --dke-chat-input-button: var(--dke-chat-input-button) !important;
 
                 --dkw-header-background: var(--dkw-header-background) !important;
-                --dkw-header-bg-image: none !important;
+                --dkw-header-bg-image: var(--dkw-header-bg-image) !important;
+                --dkw-header-logo: var(--dkw-header-logo) !important;
+                --dkw-avatar-icon: var(--dkw-avatar-icon) !important;
                 --dkw-header-text: var(--dkw-header-text) !important;
                 --dkw-body-background: var(--dkw-body-background) !important;
                 --dkw-message-outgoing-background: var(--dkw-message-outgoing-background) !important;
@@ -232,6 +239,7 @@ class Dokko_Chat_Public {
             data-footer-route="' . esc_attr($options['footer_route'] ?? '') . '"
             data-footer-text="' . esc_attr($options['footer_text'] ?? '') . '"
             data-chat-header-title="' . esc_attr($options['chat_header_title'] ?? '') . '"
+            data-avatar-icon="' . esc_attr($options['avatar_icon'] ?? '') . '"
             data-embedded="' . esc_attr($options['embedded'] === 'embedded' ? 'true' : 'false') . '"
             onload="window.Dokko.init()">
         </script>';

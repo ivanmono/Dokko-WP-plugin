@@ -624,16 +624,17 @@ class Dokko_Chat_Admin {
         
         if (!$is_embedded) {
             echo '<p style="color: #666;" class="dokko-shortcode-message">' . __('Shortcode is only available in Embedded mode. Please select "Embedded" above.', 'dokko-chat') . '</p>';
+        } else {
+            ?>
+            <div class="dokko-shortcode-display">
+            <p><strong><?php _e('Copy this shortcode and paste it into your page or post editor:', 'dokko-chat'); ?></strong></p>
+            <div style="background: #f5f5f5; padding: 10px; border-left: 4px solid #2271b1; margin: 10px 0; border-radius: 4px;">
+                <code id="dokko-shortcode-code" style="font-family: monospace; font-size: 14px; user-select: all;">[dokko_app]</code>
+            </div>
+            <p style="color: #666; font-size: 13px;"><?php _e('This shortcode will display the embedded chat on the page where you place it.', 'dokko-chat'); ?></p>
+            </div>
+            <?php
         }
-        ?>
-        <div class="dokko-shortcode-display" style="<?php echo $is_embedded ? '' : 'display: none;'; ?>">
-        <p><strong><?php _e('Copy this shortcode and paste it into your page or post editor:', 'dokko-chat'); ?></strong></p>
-        <div style="background: #f5f5f5; padding: 10px; border-left: 4px solid #2271b1; margin: 10px 0; border-radius: 4px;">
-            <code id="dokko-shortcode-code" style="font-family: monospace; font-size: 14px; user-select: all;">[dokko_app]</code>
-        </div>
-        <p style="color: #666; font-size: 13px;"><?php _e('This shortcode will display the embedded chat on the page where you place it.', 'dokko-chat'); ?></p>
-        </div>
-        <?php
         ?>
         <script>
             jQuery(document).ready(function($) {
@@ -654,9 +655,7 @@ class Dokko_Chat_Admin {
                 toggleShortcodeVisibility();
                 
                 // Update on change
-                $('input[name="<?php echo $this->plugin_name; ?>[embedded]"]').on('change', function() {
-                    toggleShortcodeVisibility();
-                });
+                $('input[name="<?php echo $this->plugin_name; ?>[embedded]"]').change(toggleShortcodeVisibility);
             });
         </script>
         <?php
