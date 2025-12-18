@@ -32,6 +32,121 @@
     display: block;
 }
 
+.dokko-segmented-control {
+
+    label {
+        margin-bottom: 0 !important;
+    }
+}
+
 .dkw-settings th {
     vertical-align: middle;
+}
+
+.form__field {
+    /* margin-bottom: 24px; */
+    width: calc(50% - 12px);
+    /* flex-grow: 1; */
+
+    input:not([type="checkbox"]),
+    textarea {
+        width: 100%;
+    }
+
+    &.is-chk {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 16px;
+    }
+
+    &.is-full {
+        width: 100%;
+    }
+
+    @media only screen and (max-width: 420px) {
+        width: 100%;
+    }
+}
+
+
+.form__field label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.dokko-general-settings {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 50%;
+    gap: 24px;
+    padding: 24px;
+    background-color: #fff;
+    border-radius: 12px;
+
+    &.no-bottom--padd {
+        padding-bottom: 0;
+    }
+
+    @media only screen and (max-width: 1024px) {
+        max-width: 100%;
+        padding: 12px;
+        gap: 12px;
+    }
+}
+
+.form__field label.form__label--chk {
+    display: inline-block;
+    margin-bottom: 0;
+}
+
+.dke-settings,
+.dkw-settings {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 50%;
+    gap: 24px;
+    padding: 24px;
+    background-color: #fff;
+    border-radius: 12px;
+    margin-bottom: 24px;
+
+    h2, h3, .dk-title {
+        display: block;
+        width: 100%;
+        margin-bottom: 16px;
+    }
+
+    .form__field {
+        display: flex;
+        flex-direction: row-reverse; /* Items flow right-to-left */
+        justify-content: flex-end; /* Pushes items to the right end */
+        gap: 24px;
+        align-items: center;
+
+        label {
+            flex-shrink: 0;
+            margin-bottom: 0;
+        }
+
+        &.is-revert {
+            display: block;
+
+            label {
+                display: block !important;
+                margin-bottom: 8px !important;
+            }
+        }
+    }
+
+    input[type="color"] {
+        width: 32px;
+    }
+
+    @media only screen and (max-width: 1024px) {
+        max-width: 100%;
+        padding: 12px;
+        gap: 12px;
+    }
 }

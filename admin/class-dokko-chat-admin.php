@@ -886,11 +886,11 @@ class Dokko_Chat_Admin {
             function updateSettingsVisibility() {
                 var mode = $('input[name="<?php echo $this->plugin_name; ?>[embedded]"]:checked').val();
                 if (mode === 'embedded') {
-                    $('.dke-settings').closest('tr').show();
-                    $('.dkw-settings').closest('tr').hide();
+                    $('.dke-settings').show();
+                    $('.dkw-settings').hide();
                 } else {
-                    $('.dke-settings').closest('tr').hide();
-                    $('.dkw-settings').closest('tr').show();
+                    $('.dke-settings').hide();
+                    $('.dkw-settings').show();
                 }
             }
 
@@ -898,7 +898,7 @@ class Dokko_Chat_Admin {
             updateSettingsVisibility();
 
             // Update on change
-            $('input[name="<?php echo $this->plugin_name; ?>[embedded]"]').change(updateSettingsVisibility);
+            $('input[name="<?php echo $this->plugin_name; ?>[embedded]"]').on('change', updateSettingsVisibility);
         });
         </script>
         <?php

@@ -1,16 +1,10 @@
 <?php
 /**
  * Provide a admin area view for the plugin
+ *
+ * This file acts as a loader for the actual template.
+ * The main HTML structure is in dokko-chat-template.php
  */
-?>
 
-<div class="wrap">
-    <h2><?php echo esc_html(get_admin_page_title()); ?></h2>
-    <form method="post" action="options.php">
-        <?php
-        settings_fields('dokko_chat_settings');
-        do_settings_sections('dokko-chat');
-        submit_button();
-        ?>
-    </form>
-</div>
+// Load the template file
+include_once(plugin_dir_path(__FILE__) . 'dokko-chat-template.php');

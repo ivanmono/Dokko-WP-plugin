@@ -103,6 +103,14 @@ Easy-to-use shortcode for embedding chat in specific pages or posts (Embedded Mo
 | **Footer Text** | Custom footer text |
 | **Chat Header Title** | Title shown at top of chat |
 | **Display Mode** | Choose between Widget or Embedded mode |
+| **Avatar Icon** | Upload a custom avatar icon image |
+| **Shortcode** | Copy/paste shortcode for embedding (Embedded mode only) |
+
+### Display Mode Toggle
+When switching between **Widget** and **Embedded** modes:
+- The appropriate CSS Variables section automatically shows/hides
+- **Widget Mode**: DKW (Dokko Chat Widget) variables appear
+- **Embedded Mode**: DKE (Dokko Chat Engine) variables appear
 
 ### CSS Variables
 
@@ -117,6 +125,8 @@ Customize the appearance when chat is embedded in pages:
 #### Widget Mode (DKW)
 Customize the floating widget appearance:
 - Header background & text color
+- Header background image upload
+- Header logo upload
 - Body background color
 - Message styling
 - Avatar styling
@@ -129,6 +139,21 @@ Customize search interface styling:
 - Button and input colors
 - Active/inactive state colors
 - Icon sizing
+
+### Template Customization
+
+The admin interface uses a **fully customizable template system**:
+
+- **Template File**: `admin/partials/dokko-chat-template.php`
+- **All HTML is exposed** - Directly edit the form table structure, styling, and layout
+- **Custom CSS classes** - Use `.form-table`, `.dokko-general-settings`, `.dke-settings`, `.dkw-settings` for styling
+- **Easy modifications** - Change field order, add sections, modify labels without touching PHP logic
+
+To customize the admin interface:
+1. Edit `admin/partials/dokko-chat-template.php`
+2. Modify HTML structure, classes, or field arrangement as needed
+3. Keep WordPress functions like `settings_fields()` and `submit_button()` intact
+4. Changes take effect immediately on page reload
 
 ## Shortcode Usage
 
@@ -200,21 +225,28 @@ Embeds the Dokko Chat in the current page or post.
 
 ```
 Dokko-WP-plugin/
-├── dokko-chat.php                 # Main plugin file
-├── README.md                       # This file
-├── admin/                          # Admin panel files
-│   ├── class-dokko-chat-admin.php # Admin settings class
-│   ├── css/                       # Admin styles
-│   ├── js/                        # Admin scripts
-│   └── partials/                  # Admin templates
-├── includes/                      # Plugin core files
-│   ├── class-dokko-chat.php      # Main plugin class
-│   └── class-dokko-chat-loader.php# Hook loader
-└── public/                        # Frontend files
-    ├── class-dokko-chat-public.php# Frontend class
-    ├── css/                       # Frontend styles
-    └── js/                        # Frontend scripts
+├── dokko-chat.php                     # Main plugin file
+├── README.md                          # This file
+├── admin/                             # Admin panel files
+│   ├── class-dokko-chat-admin.php    # Admin settings class
+│   ├── css/                          # Admin styles
+│   │   └── dokko-chat-admin.css
+│   ├── js/                           # Admin scripts
+│   │   ├── dokko-chat-admin.js
+│   │   └── dokko-media-upload.js
+│   └── partials/                     # Admin templates
+│       ├── dokko-chat-admin-display.php  # Display loader
+│       └── dokko-chat-template.php       # Main template (EDIT THIS)
+├── includes/                         # Plugin core files
+│   ├── class-dokko-chat.php         # Main plugin class
+│   └── class-dokko-chat-loader.php  # Hook loader
+└── public/                           # Frontend files
+    ├── class-dokko-chat-public.php  # Frontend class
+    ├── css/                         # Frontend styles
+    └── js/                          # Frontend scripts
 ```
+
+**Key File for Template Customization**: `admin/partials/dokko-chat-template.php`
 
 ## Security
 
@@ -241,6 +273,14 @@ Dokko-WP-plugin/
 - [WordPress Plugin Development](https://developer.wordpress.org/plugins/)
 
 ## Changelog
+
+### Version 1.1.0 (December 2025)
+- ✨ **New**: Fully customizable template system for admin interface
+- ✨ **New**: Avatar icon upload support
+- ✨ **Improved**: Dynamic show/hide of CSS variables based on display mode
+- ✨ **Improved**: Direct shortcode visibility toggle without page save
+- 🎨 **Enhancement**: All HTML template exposed for easy customization
+- 🐛 **Fixed**: Better conditional display of embedded vs widget settings
 
 ### Version 1.0.0 (November 2025)
 - ✨ Initial release
